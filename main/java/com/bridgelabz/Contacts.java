@@ -6,8 +6,8 @@ public class Contacts {
     public String firstName;
     private String lastName;
     private String address;
-    private String city;
-    private String state;
+    public String city;
+    public String state;
     private int zip;
     private long mobileNumber;
     private String emailId;
@@ -74,6 +74,7 @@ public class Contacts {
     public long getMobileNumber() {
         return mobileNumber;
     }
+
     public void setMobileNumber(long mobileNumber) {
         this.mobileNumber = mobileNumber;
     }
@@ -85,9 +86,10 @@ public class Contacts {
     public void setEmailId(String emailId) {
         this.emailId = emailId;
     }
+
     @Override
-    public String toString(){
-        return this.firstName + " " + this.lastName + ":" + this.mobileNumber + ", " + this.emailId +  " "
+    public String toString() {
+        return this.firstName + " " + this.lastName + ":" + this.mobileNumber + ", " + this.emailId + " "
                 + " address:" + this.address + ", state:" + this.state + ", city:" + this.city + ", zipCode:"
                 + this.zip;
     }
