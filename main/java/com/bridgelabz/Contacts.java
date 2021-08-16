@@ -23,6 +23,9 @@ public class Contacts {
         this.emailId = emailId;
     }
 
+    public Contacts(String filePath, String filePath1, String filePath2, String filePath3, String filePath4, String filePath5, String filePath6, String filePath7, String filePath8) {
+    }
+
     public String getFirstName() {
         return firstName;
     }
@@ -67,7 +70,7 @@ public class Contacts {
         return zip;
     }
 
-    public void setZip(int zip) {
+    public void setZip(String s) {
         this.zip = zip;
     }
 
@@ -75,7 +78,7 @@ public class Contacts {
         return mobileNumber;
     }
 
-    public void setMobileNumber(long mobileNumber) {
+    public void setMobileNumber(String s) {
         this.mobileNumber = mobileNumber;
     }
 
@@ -89,12 +92,18 @@ public class Contacts {
 
     @Override
     public String toString() {
-        return this.firstName + " " + this.lastName + ":" + this.mobileNumber + ", " + this.emailId + " "
-                + " address:" + this.address + ", state:" + this.state + ", city:" + this.city + ", zipCode:"
-                + this.zip;
+        return "Contacts{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", address='" + address + '\'' +
+                ", city='" + city + '\'' +
+                ", state='" + state + '\'' +
+                ", zip=" + zip +
+                ", mobileNumber=" + mobileNumber +
+                ", emailId='" + emailId + '\'' +
+                '}';
     }
 
-
-    public void put(int indexValue, Contacts contacts) {
+    public void add(Contacts contacts1) {
     }
 }

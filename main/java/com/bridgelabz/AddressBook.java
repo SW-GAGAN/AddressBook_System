@@ -1,50 +1,60 @@
 package com.bridgelabz;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import java.io.FileWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 /* @Description - To create a contacts in address book with first name, last name, address, city, state,
  * zip,mobile number.*/
 
 public class AddressBook {
-
-    private static List<Contacts> employeeContactsList;
-
-    public AddressBook(List<Contacts> employeeContactsList) {
-        this.employeeContactsList = employeeContactsList;
-    }
-
-    /* @Description - to write the employee contacts details */
-    private static void writeEmployeeContactsData(Scanner consoleInputReader) {
-        System.out.println("Enter your first name");
-        String firstName = consoleInputReader.nextLine();
-        System.out.println("Enter your last name");
-        String lastName = consoleInputReader.nextLine();
-        System.out.println("Enter your address name");
-        String address = consoleInputReader.nextLine();
-        System.out.println("Enter your city name");
-        String city = consoleInputReader.nextLine();
-        System.out.println("Enter your state name");
-        String state = consoleInputReader.nextLine();
-        System.out.println("Enter your zip  code ");
-        int zip = consoleInputReader.nextInt();
-        System.out.println("Enter Mobile Number ");
-        long mobileNumber = consoleInputReader.nextLong();
-        System.out.println("Enter your email Id");
-        String emailId = consoleInputReader.nextLine();
-    }
-
-    /* @Description - to read  the employee contacts details */
-    private static void readEmployeeContactsData() {
-        System.out.println("Write employee contacts details " + employeeContactsList);
-    }
-
     public static void main(String[] args) {
-        ArrayList<Contacts> employeePayrollList = new ArrayList<>();
-        AddressBook addressBook = new AddressBook(employeeContactsList);
-        Scanner consoleInputReader = new Scanner(System.in);
-        AddressBook.writeEmployeeContactsData(consoleInputReader);
-        AddressBook.readEmployeeContactsData();
+        String filePath = "C:\\Users\\Gagan SR\\Desktop\\Csv Reader\\AddressBookIO";
+        System.out.println("Starting File writing :" + filePath);
+        writeCsv(filePath);
+        System.out.println("starting read file");
+        readCsv(filePath);
+    }
 
+    private static void readCsv(String filePath) {
+    }
+
+    public static void writeCsv(String filePath) {
+        List<Contacts> contacts = new ArrayList<Contacts>();
+        Contacts contacts1 = new Contacts(filePath, filePath, filePath, filePath, filePath, filePath, filePath,
+                filePath, filePath);
+        contacts1.setFirstName("Gagan");
+        contacts1.setLastName("Reddy");
+        contacts1.setAddress("Heelalige");
+        contacts1.setCity("Bangalore");
+        contacts1.setState("KA");
+        contacts1.setZip("223223");
+        contacts1.setMobileNumber("8052636931");
+        contacts1.setEmailId("gagan99@gmail.com");
+        contacts1.add(contacts1);
+        FileWriter fileWriter = null;
+        try {
+            fileWriter = new FileWriter(filePath);
+            fileWriter.append("firstName,lastName,address,city,state,zip,mobileNumber,EmailId");
+            for (Contacts ad : contacts) {
+                fileWriter.append(String.valueOf(ad.getFirstName()));
+                fileWriter.append(String.valueOf(ad.getLastName()));
+                fileWriter.append(String.valueOf(ad.getAddress()));
+                fileWriter.append(String.valueOf(ad.getCity()));
+                fileWriter.append(String.valueOf(ad.getState()));
+                fileWriter.append(String.valueOf(ad.getZip()));
+                fileWriter.append(String.valueOf(ad.getMobileNumber()));
+                fileWriter.append(String.valueOf(ad.getEmailId()));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                fileWriter.flush();
+                fileWriter.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
