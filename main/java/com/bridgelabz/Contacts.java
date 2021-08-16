@@ -4,13 +4,13 @@ package com.bridgelabz;
  * zip,mobile number. */
 public class Contacts {
     public String firstName;
-    private String lastName;
-    private String address;
+    static String lastName;
+    public final String address;
     public String city;
     public String state;
-    private int zip;
-    private long mobileNumber;
-    private String emailId;
+    public int zip;
+    public long mobileNumber;
+    public String emailId;
 
     public Contacts(String firstName, String lastName, String address, String city, String state, int zip, long mobileNumber, String emailId) {
         this.firstName = firstName;
@@ -23,9 +23,6 @@ public class Contacts {
         this.emailId = emailId;
     }
 
-    public Contacts(String filePath, String filePath1, String filePath2, String filePath3, String filePath4, String filePath5, String filePath6, String filePath7, String filePath8) {
-    }
-
     public String getFirstName() {
         return firstName;
     }
@@ -34,20 +31,16 @@ public class Contacts {
         this.firstName = firstName;
     }
 
-    public String getLastName() {
+    public static String getLastName() {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public static void setLastName(String lastName) {
+        Contacts.lastName = lastName;
     }
 
     public String getAddress() {
         return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 
     public String getCity() {
@@ -70,7 +63,7 @@ public class Contacts {
         return zip;
     }
 
-    public void setZip(String s) {
+    public void setZip(int zip) {
         this.zip = zip;
     }
 
@@ -78,7 +71,7 @@ public class Contacts {
         return mobileNumber;
     }
 
-    public void setMobileNumber(String s) {
+    public void setMobileNumber(long mobileNumber) {
         this.mobileNumber = mobileNumber;
     }
 
@@ -94,7 +87,6 @@ public class Contacts {
     public String toString() {
         return "Contacts{" +
                 "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
                 ", address='" + address + '\'' +
                 ", city='" + city + '\'' +
                 ", state='" + state + '\'' +
@@ -102,8 +94,5 @@ public class Contacts {
                 ", mobileNumber=" + mobileNumber +
                 ", emailId='" + emailId + '\'' +
                 '}';
-    }
-
-    public void add(Contacts contacts1) {
     }
 }
